@@ -22,7 +22,11 @@ export function AddToCartButton({ product, className }: AddToCartButtonProps) {
   }
 
   return (
-    <Button onClick={handleAddToCart} className={className} disabled={isAdded}>
+    <Button
+      onClick={handleAddToCart}
+      className={`${className} ${isAdded ? "bg-green-500 hover:bg-green-600" : "bg-brand-purple hover:bg-brand-purple/90"}`}
+      disabled={isAdded}
+    >
       {isAdded ? (
         <>
           <Check className="h-4 w-4 mr-2" />

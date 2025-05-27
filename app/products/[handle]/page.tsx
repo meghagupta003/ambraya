@@ -1,10 +1,14 @@
+"use client"
+
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Star } from "lucide-react"
 import { AddToCartButton } from "@/components/add-to-cart-button"
-import { getProduct } from "@/lib/products"
+import { getProduct } from "@/lib/clothing-products"
+import { SizeSelector } from "@/components/size-selector"
+import { useState } from "react"
 
 interface ProductPageProps {
   params: {
@@ -23,9 +27,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
     ? Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)
     : 0
 
+  const [selectedVariant, setSelectedVariant] = useState(product.variants[0] || null)
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+    <div className="container mx-auto px-4 py-12">
+      <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
         <div className="space-y-4">
           <div className="aspect-square relative overflow-hidden rounded-lg">
             <Image
@@ -78,8 +84,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
 
           <div className="space-y-4">
-            <AddToCartButton product={product} className="w-full h-12 text-lg" />
-            <Button variant="outline" className="w-full h-12">
+            <SizeSelector
+              variants={product.variants}
+              selectedVariant={selectedVariant}
+              onVariantChange={setSelectedVariant}
+            />
+            <AddToCartButton
+              product={product}
+              className="w-full h-12 text-lg bg-brand-purple hover:bg-brand-purple/90 text-white"
+            />
+            <Button
+              variant="outline"
+              className="w-full h-12 border-brand-purple text-brand-purple hover:bg-brand-purple hover:text-white"
+            >
               Add to Wishlist
             </Button>
           </div>

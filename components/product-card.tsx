@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Star } from "lucide-react"
 import { AddToCartButton } from "@/components/add-to-cart-button"
 import type { Product } from "@/lib/types"
 
@@ -16,8 +15,8 @@ export function ProductCard({ product }: ProductCardProps) {
     : 0
 
   return (
-    <Card className="group overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <div className="relative aspect-square overflow-hidden">
+    <Card className="group overflow-hidden border-0 shadow-none hover:shadow-lg transition-all duration-500 hover:-translate-y-2 bg-white">
+      <div className="relative aspect-[3/4] overflow-hidden bg-brand-neutral-light">
         <Link href={`/products/${product.handle}`}>
           <Image
             src={product.image || "/placeholder.svg"}
@@ -32,27 +31,17 @@ export function ProductCard({ product }: ProductCardProps) {
         )}
         {product.isNew && <Badge className="absolute top-2 right-2 bg-green-500 hover:bg-green-600">New</Badge>}
       </div>
-      <CardContent className="p-4">
+      <CardContent className="p-6">
         <Link href={`/products/${product.handle}`}>
-          <h3 className="font-semibold text-lg mb-2 line-clamp-2 hover:text-primary transition-colors">
+          <h3 className="font-light text-lg mb-2 line-clamp-2 hover:text-brand-purple transition-colors tracking-wide">
             {product.title}
           </h3>
         </Link>
-        <div className="flex items-center gap-1 mb-2">
-          {[...Array(5)].map((_, i) => (
-            <Star
-              key={i}
-              className={`h-4 w-4 ${
-                i < Math.floor(product.rating) ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-              }`}
-            />
-          ))}
-          <span className="text-sm text-muted-foreground ml-1">({product.reviewCount})</span>
-        </div>
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-2xl font-bold">${product.price}</span>
+        <p className="text-sm text-gray-500 mb-3 uppercase tracking-wider">{product.category}</p>
+        <div className="flex items-center gap-2 mb-4">
+          <span className="text-xl font-light">${product.price}</span>
           {product.compareAtPrice && (
-            <span className="text-lg text-muted-foreground line-through">${product.compareAtPrice}</span>
+            <span className="text-lg text-gray-400 line-through">${product.compareAtPrice}</span>
           )}
         </div>
       </CardContent>
