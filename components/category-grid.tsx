@@ -5,27 +5,27 @@ export function CategoryGrid() {
   const categories = [
     {
       name: "Coord Sets",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/coord-sets-category.webp",
       href: "/category/coord-sets",
     },
     {
       name: "Suit Sets",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/suit-sets-category.webp",
       href: "/category/suit-sets",
     },
     {
       name: "Unstitched Suits",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/unstitched-suits-category.jpeg",
       href: "/category/unstitched-suits",
     },
     {
       name: "Dresses",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/dresses-category.jpeg",
       href: "/category/dresses",
     },
     {
       name: "Cotton Classics",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/cotton-classics-category.webp",
       href: "/category/cotton-classics",
     },
     {
