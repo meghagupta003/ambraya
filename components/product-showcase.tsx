@@ -32,6 +32,20 @@ export function ProductShowcase() {
       image: "/placeholder.svg?height=500&width=400",
       href: "/products/wide-leg-pants",
     },
+    {
+      id: "5",
+      name: "Silk Blouse",
+      price: 95,
+      image: "/placeholder.svg?height=500&width=400",
+      href: "/products/silk-blouse",
+    },
+    {
+      id: "6",
+      name: "Denim Jacket",
+      price: 120,
+      image: "/placeholder.svg?height=500&width=400",
+      href: "/products/denim-jacket",
+    },
   ]
 
   return (
@@ -42,7 +56,8 @@ export function ProductShowcase() {
           <p className="text-lg text-gray-600">Our most loved pieces, chosen by you</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <Link key={product.id} href={product.href} className="group">
               <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
@@ -61,6 +76,30 @@ export function ProductShowcase() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden overflow-x-auto scrollbar-hide">
+          <div className="flex gap-4 pb-4 px-2" style={{ width: "max-content" }}>
+            {products.map((product) => (
+              <Link key={product.id} href={product.href} className="group flex-shrink-0 w-48">
+                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div className="aspect-[3/4] relative overflow-hidden">
+                    <Image
+                      src={product.image || "/placeholder.svg"}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h3 className="font-medium text-gray-800 mb-1 text-sm leading-tight">{product.name}</h3>
+                    <p className="text-base font-light text-gray-600">${product.price}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="text-center mt-12">

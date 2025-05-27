@@ -43,7 +43,8 @@ export function CategoryGrid() {
   return (
     <section className="py-0">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-0 border">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-7 gap-0 border">
           {categories.map((category, index) => (
             <Link
               key={category.name}
@@ -63,6 +64,31 @@ export function CategoryGrid() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Mobile Horizontal Scroll */}
+        <div className="md:hidden overflow-x-auto scrollbar-hide">
+          <div className="flex gap-4 pb-4 px-2" style={{ width: "max-content" }}>
+            {categories.map((category, index) => (
+              <Link
+                key={category.name}
+                href={category.href}
+                className="group flex-shrink-0 w-32 hover:bg-gray-50 transition-colors rounded-lg border"
+              >
+                <div className="p-3 text-center">
+                  <div className="aspect-[3/4] relative mb-3 overflow-hidden rounded-md">
+                    <Image
+                      src={category.image || "/placeholder.svg"}
+                      alt={category.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xs font-medium text-gray-800 leading-tight">{category.name}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
