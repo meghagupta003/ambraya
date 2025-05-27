@@ -76,7 +76,7 @@ export function CategoryGrid() {
             <Link
               key={category.name}
               href={category.href}
-              className="group flex-shrink-0 w-32 border-r last:border-r-0 hover:bg-gray-50 transition-colors"
+              className="group flex-shrink-0 w-28 border-r last:border-r-0 hover:bg-gray-50 transition-colors"
             >
               <div className="p-4 text-center">
                 <div className="aspect-[3/4] relative mb-4 overflow-hidden">
