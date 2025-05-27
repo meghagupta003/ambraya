@@ -121,7 +121,7 @@ export function Footer() {
               className="h-14 w-auto mix-blend-multiply"
             />
           </div>
-          <div className="text-sm text-gray-600">© 2024 Ambraya. All rights reserved.</div>
+          <div className="text-sm text-gray-600">© 2025 Ambraya. All rights reserved.</div>
         </div>
       </div>
     </footer>
