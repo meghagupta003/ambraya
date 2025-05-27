@@ -15,18 +15,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/men" className="hover:text-brand-purple">
-                  Men
+                <Link href="/jewelry" className="hover:text-brand-purple">
+                  Jewelry
                 </Link>
               </li>
               <li>
-                <Link href="/home" className="hover:text-brand-purple">
-                  Home
+                <Link href="/new-arrivals" className="hover:text-brand-purple">
+                  New Arrivals
                 </Link>
               </li>
               <li>
-                <Link href="/gifts" className="hover:text-brand-purple">
-                  Gifts
+                <Link href="/best-sellers" className="hover:text-brand-purple">
+                  Best Sellers
                 </Link>
               </li>
             </ul>
@@ -113,7 +113,13 @@ export function Footer() {
 
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center mb-4 md:mb-0">
-            <Image src="/ambraya-logo.png" alt="Ambraya" width={100} height={32} className="h-8 w-auto" />
+            <Image
+              src="/ambraya-logo.png"
+              alt="Ambraya"
+              width={180}
+              height={60}
+              className="h-14 w-auto mix-blend-multiply"
+            />
           </div>
           <div className="text-sm text-gray-600">© 2024 Ambraya. All rights reserved.</div>
         </div>

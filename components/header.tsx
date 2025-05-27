@@ -26,7 +26,7 @@ export function Header() {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-8">
               <Link href="/" className="flex items-center">
-                <Image src="/ambraya-logo.png" alt="Ambraya" width={120} height={40} className="h-10 w-auto" />
+                <Image src="/ambraya-logo.png" alt="Ambraya" width={200} height={75} className="h-16 w-auto" />
               </Link>
 
               <nav className="hidden lg:flex items-center space-x-8">
@@ -39,17 +39,8 @@ export function Header() {
                 <Link href="/women" className="text-sm hover:text-brand-purple transition-colors">
                   Women
                 </Link>
-                <Link href="/men" className="text-sm hover:text-brand-purple transition-colors">
-                  Men
-                </Link>
-                <Link href="/home" className="text-sm hover:text-brand-purple transition-colors">
-                  Home
-                </Link>
-                <Link href="/travel" className="text-sm hover:text-brand-purple transition-colors">
-                  Travel
-                </Link>
-                <Link href="/gifts" className="text-sm hover:text-brand-purple transition-colors">
-                  Gifts
+                <Link href="/jewelry" className="text-sm hover:text-brand-purple transition-colors">
+                  Jewelry
                 </Link>
                 <Link href="/about" className="text-sm hover:text-brand-purple transition-colors">
                   About
@@ -111,17 +102,8 @@ export function Header() {
                     <Link href="/women" className="text-lg">
                       Women
                     </Link>
-                    <Link href="/men" className="text-lg">
-                      Men
-                    </Link>
-                    <Link href="/home" className="text-lg">
-                      Home
-                    </Link>
-                    <Link href="/travel" className="text-lg">
-                      Travel
-                    </Link>
-                    <Link href="/gifts" className="text-lg">
-                      Gifts
+                    <Link href="/jewelry" className="text-lg">
+                      Jewelry
                     </Link>
                     <Link href="/about" className="text-lg">
                       About

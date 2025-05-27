@@ -4,39 +4,39 @@ import Image from "next/image"
 export function CategoryGrid() {
   const categories = [
     {
+      name: "Coord Sets",
+      image: "/placeholder.svg?height=400&width=300",
+      href: "/category/coord-sets",
+    },
+    {
+      name: "Suit Sets",
+      image: "/placeholder.svg?height=400&width=300",
+      href: "/category/suit-sets",
+    },
+    {
+      name: "Unstitched Suits",
+      image: "/placeholder.svg?height=400&width=300",
+      href: "/category/unstitched-suits",
+    },
+    {
       name: "Dresses",
       image: "/placeholder.svg?height=400&width=300",
       href: "/category/dresses",
     },
     {
-      name: "Bottoms",
+      name: "Cotton Classics",
       image: "/placeholder.svg?height=400&width=300",
-      href: "/category/bottoms",
+      href: "/category/cotton-classics",
     },
     {
-      name: "Tees & Tanks",
+      name: "Jewelry",
       image: "/placeholder.svg?height=400&width=300",
-      href: "/category/tees-tanks",
+      href: "/category/jewelry",
     },
     {
-      name: "Linen",
+      name: "Comfort Fit",
       image: "/placeholder.svg?height=400&width=300",
-      href: "/category/linen",
-    },
-    {
-      name: "Swimwear",
-      image: "/placeholder.svg?height=400&width=300",
-      href: "/category/swimwear",
-    },
-    {
-      name: "Men",
-      image: "/placeholder.svg?height=400&width=300",
-      href: "/category/men",
-    },
-    {
-      name: "Home",
-      image: "/placeholder.svg?height=400&width=300",
-      href: "/category/home",
+      href: "/category/comfort-fit",
     },
   ]
 
