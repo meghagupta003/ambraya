@@ -67,16 +67,16 @@ export function CategoryGrid() {
         </div>
 
         {/* Mobile Horizontal Scroll */}
-        <div className="md:hidden overflow-x-auto scrollbar-hide">
-          <div className="flex gap-4 pb-4 px-2" style={{ width: "max-content" }}>
+        <div className="md:hidden overflow-x-auto scrollbar-hide border">
+          <div className="flex" style={{ width: "max-content" }}>
             {categories.map((category, index) => (
               <Link
                 key={category.name}
                 href={category.href}
-                className="group flex-shrink-0 w-32 hover:bg-gray-50 transition-colors rounded-lg border"
+                className="group flex-shrink-0 w-32 border-r last:border-r-0 hover:bg-gray-50 transition-colors"
               >
-                <div className="p-3 text-center">
-                  <div className="aspect-[3/4] relative mb-3 overflow-hidden rounded-md">
+                <div className="p-4 text-center">
+                  <div className="aspect-[3/4] relative mb-4 overflow-hidden">
                     <Image
                       src={category.image || "/placeholder.svg"}
                       alt={category.name}
@@ -84,7 +84,7 @@ export function CategoryGrid() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <h3 className="text-xs font-medium text-gray-800 leading-tight">{category.name}</h3>
+                  <h3 className="text-sm font-medium text-gray-800">{category.name}</h3>
                 </div>
               </Link>
             ))}
