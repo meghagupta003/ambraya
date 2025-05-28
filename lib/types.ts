@@ -14,6 +14,27 @@ export interface Product {
   category: string
   tags: string[]
   variants: ProductVariant[]
+  details?: ProductDetails
+}
+
+export interface ProductDetails {
+  fabric?: string
+  print?: string
+  style?: string
+  highlights?: string[]
+  sizeChart?: SizeChartEntry[]
+  sizingNotes?: string[]
+  styleNote?: string
+  shipping?: string[]
+}
+
+export interface SizeChartEntry {
+  size: string
+  bust: string
+  waist: string
+  shoulder: string
+  sleeveLength: string
+  dressLength: string
 }
 
 export interface ProductVariant {

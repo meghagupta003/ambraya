@@ -61,6 +61,8 @@ const config = {
             light: "#fafafb",
             medium: "#f5f5f6",
           },
+          gold: "#d4af37",
+          beige: "#f5f5f0",
         },
       },
       borderRadius: {
@@ -83,11 +85,13 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        'tenor': ['var(--font-tenor-sans)', 'serif'],
+        'lato': ['var(--font-lato)', 'sans-serif'],
       },
       letterSpacing: {
         wider: "0.1em",
         widest: "0.2em",
+        luxury: "0.15em",
       },
     },
   },

@@ -64,7 +64,34 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-lato font-light;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-tenor tracking-wider;
+  }
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+  .luxury-button {
+    @apply tracking-luxury uppercase font-tenor transition-all duration-300;
+  }
+  .luxury-card {
+    @apply border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+  .luxury-heading {
+    @apply font-tenor tracking-wider uppercase;
+  }
+  .luxury-subheading {
+    @apply font-lato font-light tracking-wide text-gray-600;
   }
 }
 

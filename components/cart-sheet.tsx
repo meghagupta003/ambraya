@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
@@ -30,7 +30,9 @@ export function CartSheet({ children }: CartSheetProps) {
             {items.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center">
                 <p className="text-muted-foreground mb-4">Your cart is empty</p>
-                <Button variant="outline">Continue Shopping</Button>
+                <Button variant="outline" asChild>
+                  <Link href="/products">Continue Shopping</Link>
+                </Button>
               </div>
             ) : (
               <div className="space-y-4">
@@ -83,9 +85,14 @@ export function CartSheet({ children }: CartSheetProps) {
                 <div className="flex justify-between text-lg font-semibold">
                   <span>Total: ${total.toFixed(2)}</span>
                 </div>
-                <Button className="w-full" size="lg">
-                  Checkout
-                </Button>
+                <div className="grid grid-cols-2 gap-4">
+                  <Button variant="outline" asChild>
+                    <Link href="/products">Continue Shopping</Link>
+                  </Button>
+                  <Button className="bg-brand-purple hover:bg-brand-purple/90 text-white" asChild>
+                    <Link href="/checkout">Checkout</Link>
+                  </Button>
+                </div>
               </div>
             </>
           )}

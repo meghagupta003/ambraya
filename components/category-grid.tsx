@@ -41,7 +41,14 @@ export function CategoryGrid() {
   ]
 
   return (
-    <section className="py-0">
+    <section className="py-8">
+      <div className="container mx-auto px-4 mb-8">
+        <div className="text-center">
+          <h2 className="font-tenor text-2xl uppercase tracking-wider mb-3">Shop by Category</h2>
+          <div className="w-16 h-px bg-brand-gold mx-auto mb-6"></div>
+        </div>
+      </div>
+      
       {/* Desktop Grid */}
       <div className="hidden md:block">
         <div className="container mx-auto px-4">
@@ -50,18 +57,18 @@ export function CategoryGrid() {
               <Link
                 key={category.name}
                 href={category.href}
-                className="group border-r border-b last:border-r-0 hover:bg-gray-50 transition-colors"
+                className="group border-r border-b last:border-r-0 hover:bg-brand-beige transition-colors"
               >
-                <div className="p-4 text-center">
-                  <div className="aspect-[3/4] relative mb-4 overflow-hidden">
+                <div className="p-6 text-center">
+                  <div className="aspect-[3/4] relative mb-6 overflow-hidden">
                     <Image
                       src={category.image || "/placeholder.svg"}
                       alt={category.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
-                  <h3 className="text-sm font-medium text-gray-800">{category.name}</h3>
+                  <h3 className="font-tenor text-sm uppercase tracking-wider text-gray-800">{category.name}</h3>
                 </div>
               </Link>
             ))}
@@ -76,7 +83,7 @@ export function CategoryGrid() {
             <Link
               key={category.name}
               href={category.href}
-              className="group flex-shrink-0 w-28 border-r last:border-r-0 hover:bg-gray-50 transition-colors"
+              className="group flex-shrink-0 w-28 border-r last:border-r-0 hover:bg-brand-beige transition-colors"
             >
               <div className="p-4 text-center">
                 <div className="aspect-[3/4] relative mb-4 overflow-hidden">
@@ -84,10 +91,10 @@ export function CategoryGrid() {
                     src={category.image || "/placeholder.svg"}
                     alt={category.name}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="text-sm font-medium text-gray-800">{category.name}</h3>
+                <h3 className="font-tenor text-xs uppercase tracking-wider text-gray-800">{category.name}</h3>
               </div>
             </Link>
           ))}
