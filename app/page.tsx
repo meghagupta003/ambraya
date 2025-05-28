@@ -11,6 +11,10 @@ export default function HomePage() {
       <CategoryGrid />
       <FeaturedSection />
       <ProductShowcase />
+
+      {/* Spacer between bestsellers and newsletter */}
+      <div className="py-16"></div>
+
       <NewsletterSignup />
     </main>
   )

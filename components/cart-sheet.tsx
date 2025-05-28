@@ -43,7 +43,7 @@ export function CartSheet({ children }: CartSheetProps) {
                     </div>
                     <div className="flex-1">
                       <h4 className="font-medium line-clamp-2">{item.title}</h4>
-                      <p className="text-sm text-muted-foreground">${item.price}</p>
+                      <p className="text-sm text-muted-foreground">₹{item.price}</p>
                       <div className="flex items-center gap-2 mt-2">
                         <Button
                           variant="outline"
@@ -83,7 +83,7 @@ export function CartSheet({ children }: CartSheetProps) {
               <Separator />
               <div className="py-4 space-y-4">
                 <div className="flex justify-between text-lg font-semibold">
-                  <span>Total: ${total.toFixed(2)}</span>
+                  <span>Total: ₹{total.toFixed(2)}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Button variant="outline" asChild>

@@ -85,7 +85,7 @@ export default function CheckoutPage() {
                     <h4 className="font-medium line-clamp-1">{item.title}</h4>
                     <div className="flex justify-between text-sm text-gray-500">
                       <span>Qty: {item.quantity}</span>
-                      <span>${(item.price * item.quantity).toFixed(2)}</span>
+                      <span>₹{(item.price * item.quantity).toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -97,15 +97,15 @@ export default function CheckoutPage() {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${total.toFixed(2)}</span>
+                <span>₹{total.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
-                <span>{shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`}</span>
+                <span>{shippingCost === 0 ? "Free" : `₹${shippingCost.toFixed(2)}`}</span>
               </div>
               <div className="flex justify-between">
                 <span>Tax</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>₹{tax.toFixed(2)}</span>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ export default function CheckoutPage() {
 
             <div className="flex justify-between font-bold">
               <span>Total</span>
-              <span>${orderTotal.toFixed(2)}</span>
+              <span>₹{orderTotal.toFixed(2)}</span>
             </div>
           </div>
         </div>
@@ -245,7 +245,7 @@ export default function CheckoutPage() {
               className="w-full h-12 text-lg bg-brand-purple hover:bg-brand-purple/90 text-white"
               disabled={loading}
             >
-              {loading ? "Processing..." : `Place Order • $${orderTotal.toFixed(2)}`}
+              {loading ? "Processing..." : `Place Order • ₹${orderTotal.toFixed(2)}`}
             </Button>
           </form>
         </div>
