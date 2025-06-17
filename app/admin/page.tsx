@@ -1,10 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 
 export default function AdminDashboard() {
   const supabase = createClient();
+  const router = useRouter();
+
+  const [user, setUser] = useState<any>(null);
   const [products, setProducts] = useState<any[]>([]);
   const [form, setForm] = useState({
     name: '',
@@ -18,8 +22,24 @@ export default function AdminDashboard() {
   });
   const [image, setImage] = useState<File | null>(null);
 
-  // Fetch all products
+  // Auth check
   useEffect(() => {
+    const checkUser = async () => {
+      const { data } = await supabase.auth.getUser();
+      const loggedInUser = data?.user;
+
+      if (!loggedInUser || loggedInUser.email !== 'ambrayalifestyle@gmail.com') {
+        router.push('/login');
+      } else {
+        setUser(loggedInUser);
+      }
+    };
+    checkUser();
+  }, []);
+
+  // Fetch products
+  useEffect(() => {
+    if (!user) return;
     async function fetchData() {
       const res = await fetch('/api/admin');
       if (!res.ok) return;
@@ -27,10 +47,9 @@ export default function AdminDashboard() {
       setProducts(data);
     }
     fetchData();
-  }, []);
+  }, [user]);
 
-  // Submit form handler
-    const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const payload = {
@@ -48,23 +67,20 @@ export default function AdminDashboard() {
 
     const response = await fetch('/api/admin', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
     const product = await response.json();
 
     if (!response.ok) {
-      alert(`Failed: ${product.error}`);
+      alert(`❌ Failed: ${product.error}`);
       return;
     }
 
     if (image && product?.id) {
-      const fileExt = image.name.split('.').pop();
-      const filePath = `products/${product.id}-${Date.now()}.${fileExt}`;
-
+      const ext = image.name.split('.').pop();
+      const filePath = `products/${product.id}-${Date.now()}.${ext}`;
       const { error: uploadError } = await supabase.storage
         .from('product-images')
         .upload(filePath, image);
@@ -88,16 +104,15 @@ export default function AdminDashboard() {
     }
 
     alert('✅ Product added successfully!');
-
     location.reload();
   };
 
+  if (!user) return null;
 
   return (
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-6">🛠 Inventory Dashboard</h1>
 
-      {/* Product Form */}
       <form onSubmit={handleSubmit} className="space-y-4 mb-10">
         <input
           className="border p-2 w-full"
@@ -110,7 +125,6 @@ export default function AdminDashboard() {
           type="number"
           onChange={(e) => setForm({ ...form, price: e.target.value })}
         />
-
         <div className="grid grid-cols-3 gap-2">
           {['xs', 's', 'm', 'l', 'xl', 'xxl'].map((size) => (
             <input
@@ -124,42 +138,27 @@ export default function AdminDashboard() {
             />
           ))}
         </div>
-
         <input
           type="file"
           accept="image/*"
           className="border p-2 w-full"
           onChange={(e) => setImage(e.target.files?.[0] || null)}
         />
-
-        <button
-          type="submit"
-          className="bg-black text-white px-4 py-2 rounded"
-        >
+        <button type="submit" className="bg-black text-white px-4 py-2 rounded">
           Add Product
         </button>
       </form>
 
-      {/* Product Preview */}
       <div className="space-y-4">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="border p-4 rounded bg-white shadow"
-          >
+          <div key={product.id} className="border p-4 rounded bg-white shadow">
             <h2 className="font-semibold text-lg">{product.name}</h2>
             <p>Price: ₹{product.price}</p>
             <p>
-              XS: {product.sizes?.xs} | S: {product.sizes?.s} | M:{' '}
-              {product.sizes?.m} | L: {product.sizes?.l} | XL:{' '}
-              {product.sizes?.xl} | XXL: {product.sizes?.xxl}
+              XS: {product.sizes?.xs} | S: {product.sizes?.s} | M: {product.sizes?.m} | L: {product.sizes?.l} | XL: {product.sizes?.xl} | XXL: {product.sizes?.xxl}
             </p>
             {product.image_url && (
-              <img
-                src={product.image_url}
-                alt={product.name}
-                className="mt-2 w-40"
-              />
+              <img src={product.image_url} alt={product.name} className="mt-2 w-40" />
             )}
           </div>
         ))}
@@ -167,3 +166,5 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
+
