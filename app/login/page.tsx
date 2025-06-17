@@ -1,63 +1,84 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const supabase = createClient();
   const router = useRouter();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     if (error) {
-      setError(error.message);
-      return;
+      toast.error(`Login failed: ${error.message}`);
+    } else {
+      toast.success('🎉 Login successful!');
+      router.push('/admin');
     }
+  };
 
-    if (data.user.email !== 'ambrayalifestyle@gmail.com') {
-      setError('Access restricted to admin only.');
-      await supabase.auth.signOut();
-      return;
+  const handleForgotPassword = async () => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'https://ambraya.vercel.app/reset',
+    });
+
+    if (error) {
+      toast.error(`Reset failed: ${error.message}`);
+    } else {
+      toast.success('📩 Reset email sent. Check your inbox!');
     }
-
-    router.push('/admin');
   };
 
   return (
-    <div className="p-8 max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Admin Login</h1>
-      <form onSubmit={handleLogin} className="space-y-4">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4">
+      <form onSubmit={handleLogin} className="space-y-4 w-full max-w-sm">
+        <h1 className="text-2xl font-bold mb-4">Login to Admin</h1>
+
         <input
-          type="email"
           className="border p-2 w-full"
           placeholder="Email"
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
-          type="password"
           className="border p-2 w-full"
           placeholder="Password"
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
-        <button className="bg-black text-white px-4 py-2 rounded w-full">
-          Sign In
+
+        <button
+          type="submit"
+          className="bg-black text-white px-4 py-2 rounded w-full"
+        >
+          Login
         </button>
-        {error && <p className="text-red-600 text-sm">{error}</p>}
+
+        <button
+          type="button"
+          onClick={handleForgotPassword}
+          className="text-sm text-blue-600 underline"
+          disabled={!email}
+        >
+          Forgot password?
+        </button>
       </form>
     </div>
   );
 }
+
 

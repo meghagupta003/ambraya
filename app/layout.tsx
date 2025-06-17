@@ -6,6 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CartProvider } from "@/hooks/use-cart"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "sonner"  // ✅ Add this line
 
 // Font configurations
 const tenorSans = Tenor_Sans({ 
@@ -54,9 +55,13 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
+            <Toaster richColors position="top-center" /> {/* ✅ Add this */}
           </CartProvider>
         </ThemeProvider>
       </body>
     </html>
   )
 }
+
+
+
