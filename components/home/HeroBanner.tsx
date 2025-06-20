@@ -8,7 +8,7 @@ export default function HeroBanner() {
   return (
     <section className="relative w-full h-[85vh] overflow-hidden">
       <Image
-        src="/hero.jpg"
+        src="/herobanner.jpg"
         alt="Luxury Fashion Banner"
         layout="fill"
         objectFit="cover"
