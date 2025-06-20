@@ -41,14 +41,14 @@ export default function ProductHighlights() {
       <h2 className="text-center text-2xl font-semibold mb-8 tracking-wide">
         Best Sellers
       </h2>
-      <div className="flex gap-6 overflow-x-auto scrollbar-hide max-w-7xl mx-auto px-2">
+      <div className="flex gap-4 overflow-x-auto overflow-visible scrollbar-hide max-w-7xl mx-auto px-4">
         {products.map((item) => (
           <a
             key={item.name}
             href={item.link}
-            className="min-w-[200px] max-w-[220px] flex-shrink-0 shadow rounded overflow-hidden hover:shadow-lg transition"
+            className="min-w-[200px] max-w-[220px] flex-shrink-0 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 mx-2 pb-2"
           >
-            <div className="relative h-60 w-full">
+            <div className="relative h-60 w-full rounded-t-xl overflow-hidden">
               <Image
                 src={item.image}
                 alt={item.name}

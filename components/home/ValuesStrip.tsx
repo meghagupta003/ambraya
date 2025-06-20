@@ -33,7 +33,7 @@ export default function ValuesStrip() {
                   src={value.image}
                   alt={value.title}
                   layout="fill"
-                  objectFit="cover"
+                  objectFit="contain"
                 />
               </div>
               <h3 className="text-xl font-medium">{value.title}</h3>
