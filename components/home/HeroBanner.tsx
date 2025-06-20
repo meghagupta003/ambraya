@@ -8,7 +8,7 @@ export default function HeroBanner() {
   return (
     <section className="relative w-full h-[85vh] overflow-hidden">
       <Image
-        src="https://images.unsplash.com/photo-1602810316599-6e0b9f05559e?auto=format&fit=crop&w=1600&q=80"
+        src="/hero.jpg"
         alt="Luxury Fashion Banner"
         layout="fill"
         objectFit="cover"
